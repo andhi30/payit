@@ -1,13 +1,15 @@
 
 import React, { Component } from "react";
 import QrReader from "modern-react-qr-reader";
+import Header from "./Header";
 
 class Test extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            result: "No result"
+            result: "No result",
+            resultList: []
         };
 
         this.handleError = this.handleError.bind(this);
@@ -16,10 +18,14 @@ class Test extends Component {
 
     handleScan = (data) => {
         if (data) {
-            this.setState({
-                result: data
-            });
-            console.log(this.state.result);
+            if (!this.state.resultList.includes(data)) {
+                this.setState(prevState => ({
+                    result: data,
+                    resultList: [...prevState.resultList, data]
+                }));
+                console.log(this.state.result);
+                console.log(this.state.resultList);
+            }
             // this.setState({result: data});
         }
     };
@@ -30,21 +36,25 @@ class Test extends Component {
 
     render() {
         return (
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}>
-                <QrReader
-                    delay={300}
-                    facingMode={"environment"}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    style={{ width: "80%" }}
-                />
-                
+            <>
+                <Header title='Pay!t' />
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <QrReader
+                        delay={300}
+                        facingMode={"environment"}
+                        onError={this.handleError}
+                        onScan={this.handleScan}
+                        style={{ width: "80%" }}
+                    />
+
+
+                </div>
                 <p>{this.state.result}</p>
-            </div>
+            </>
         );
     }
 }
