@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/payit/static/js/main.01486777.chunk.js",
+    "main.js.map": "/payit/static/js/main.01486777.chunk.js.map",
+    "runtime-main.js": "/payit/static/js/runtime-main.67c709b2.js",
+    "runtime-main.js.map": "/payit/static/js/runtime-main.67c709b2.js.map",
+    "static/js/2.91ec1b56.chunk.js": "/payit/static/js/2.91ec1b56.chunk.js",
+    "static/js/2.91ec1b56.chunk.js.map": "/payit/static/js/2.91ec1b56.chunk.js.map",
+    "index.html": "/payit/index.html",
+    "static/js/2.91ec1b56.chunk.js.LICENSE.txt": "/payit/static/js/2.91ec1b56.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.67c709b2.js",
+    "static/js/2.91ec1b56.chunk.js",
+    "static/js/main.01486777.chunk.js"
+  ]
+}
