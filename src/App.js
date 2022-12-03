@@ -1,7 +1,7 @@
 
-import React, { Component } from "react";
-import QrReader from "modern-react-qr-reader";
+import React, { Component, useEffect } from "react";
 import Header from "./Header";
+import { BrowserQRCodeReader, BrowserCodeReader, BrowserMultiFormatReader } from '@zxing/browser';
 
 class Test extends Component {
     constructor(props) {
@@ -34,23 +34,44 @@ class Test extends Component {
         console.error(err);
     };
 
+    async componentDidMount() {
+        const codeReader = new BrowserMultiFormatReader();
+
+        const videoInputDevices = await BrowserCodeReader.listVideoInputDevices();
+
+        // choose your media device (webcam, frontal camera, back camera, etc.)
+        const selectedDeviceId = videoInputDevices[0].deviceId;
+
+        console.log(`Started decode from camera with id ${selectedDeviceId}`);
+
+        const previewElem = document.querySelector('#test-area-qr-code-webcam > video');
+
+        // you can use the controls to stop() the scan or switchTorch() if available
+        const controls = await codeReader.decodeFromVideoDevice(selectedDeviceId, previewElem, (result, error, controls) => {
+            // use the result and error values to choose your actions
+            // you can also use controls API in this scope like the controls
+            // returned from the method.
+            if (result)
+            console.log(result.getText())
+        });
+
+        // stops scanning after 20 seconds
+        setTimeout(() => controls.stop(), 20000);
+    }
+
     render() {
         return (
             <>
                 <Header title='Pay!t' />
-                <div style={{
+                <div id="test-area-qr-code-webcam" style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                 }}>
-                    <QrReader
-                        delay={300}
-                        facingMode={"environment"}
-                        onError={this.handleError}
-                        onScan={this.handleScan}
-                        style={{ width: "80%" }}
-                    />
+                    
+                <video>
 
+                </video>
 
                 </div>
                 <p>{this.state.result}</p>
