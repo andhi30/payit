@@ -1,7 +1,7 @@
 
 import React, { Component, useEffect } from "react";
 import Header from "./Header";
-import { BrowserQRCodeReader, BrowserCodeReader, BrowserMultiFormatReader } from '@zxing/browser';
+import { BrowserCodeReader, BrowserMultiFormatReader } from '@zxing/browser';
 
 class Test extends Component {
     constructor(props) {
@@ -45,14 +45,18 @@ class Test extends Component {
         console.log(`Started decode from camera with id ${selectedDeviceId}`);
 
         const previewElem = document.querySelector('#test-area-qr-code-webcam > video');
+        const resultDisplay = document.querySelector('#result');
+
 
         // you can use the controls to stop() the scan or switchTorch() if available
         const controls = await codeReader.decodeFromVideoDevice(selectedDeviceId, previewElem, (result, error, controls) => {
             // use the result and error values to choose your actions
             // you can also use controls API in this scope like the controls
             // returned from the method.
-            if (result)
+            if (result){
             console.log(result.getText())
+            resultDisplay.innerHTML += `<br/>${result}`
+            }
         });
 
         // stops scanning after 20 seconds
@@ -74,7 +78,7 @@ class Test extends Component {
                 </video>
 
                 </div>
-                <p>{this.state.result}</p>
+                <p id="result"></p>
             </>
         );
     }
