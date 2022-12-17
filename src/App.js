@@ -21,19 +21,19 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header title='Pay!t'/>
+        <Header title='Pay!t' />
         <section className="App-section">
           <br />
           <br />
           <br />
-          <Html5QrcodePlugin 
-            fps={10}
-            qrbox={200}
+          <Html5QrcodePlugin
+            fps={30}
+            qrbox={250}
             disableFlip={false}
-            qrCodeSuccessCallback={this.onNewScanResult}/>
+            qrCodeSuccessCallback={this.onNewScanResult} />
           {/* <ResultContainerPlugin results={this.state.decodedResults} /> */}
         </section>
-        <SwipeableEdgeDrawer results={this.state.decodedResults}/>
+        <SwipeableEdgeDrawer results={this.state.decodedResults} />
       </div>
     );
   }
@@ -45,8 +45,10 @@ class App extends React.Component {
     // let decodedResults = this.state.decodedResults;
     // decodedResults.push(decodedResult);
     this.setState((state, props) => {
-      state.decodedResults.push(decodedResult);
-      return state;
+      if (JSON.stringify(state.decodedResults[state.decodedResults.length-1]) != JSON.stringify(decodedResult)) {
+        state.decodedResults.push(decodedResult);
+        return state;
+      }
     });
   }
 }
