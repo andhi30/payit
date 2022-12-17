@@ -5,6 +5,7 @@ import Html5QrcodePlugin from './Html5QrcodePlugin.jsx'
 import ResultContainerPlugin from './ResultContainerPlugin.jsx'
 import HowToUse from './HowToUse.jsx'
 import Header from './components/Header';
+import SwipeableEdgeDrawer from './ResultDrawer';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,8 +31,9 @@ class App extends React.Component {
             qrbox={200}
             disableFlip={false}
             qrCodeSuccessCallback={this.onNewScanResult}/>
-          {/* <ResultContainerPlugin results={this.state.decodedResults} /> */}
+          <ResultContainerPlugin results={this.state.decodedResults} />
         </section>
+        <SwipeableEdgeDrawer/>
       </div>
     );
   }
