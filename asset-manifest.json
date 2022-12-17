@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/payit/static/css/main.328a1b5a.chunk.css",
+    "main.css": "/payit/static/css/main.bd989ca6.chunk.css",
     "main.js": "/payit/static/js/main.7229a61d.chunk.js",
     "main.js.map": "/payit/static/js/main.7229a61d.chunk.js.map",
     "runtime-main.js": "/payit/static/js/runtime-main.6f574daa.js",
@@ -10,13 +10,13 @@
     "static/js/3.c4ea969e.chunk.js": "/payit/static/js/3.c4ea969e.chunk.js",
     "static/js/3.c4ea969e.chunk.js.map": "/payit/static/js/3.c4ea969e.chunk.js.map",
     "index.html": "/payit/index.html",
-    "static/css/main.328a1b5a.chunk.css.map": "/payit/static/css/main.328a1b5a.chunk.css.map",
+    "static/css/main.bd989ca6.chunk.css.map": "/payit/static/css/main.bd989ca6.chunk.css.map",
     "static/js/2.534c7370.chunk.js.LICENSE.txt": "/payit/static/js/2.534c7370.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6f574daa.js",
     "static/js/2.534c7370.chunk.js",
-    "static/css/main.328a1b5a.chunk.css",
+    "static/css/main.bd989ca6.chunk.css",
     "static/js/main.7229a61d.chunk.js"
   ]
 }
