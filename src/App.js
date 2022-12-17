@@ -31,9 +31,9 @@ class App extends React.Component {
             qrbox={200}
             disableFlip={false}
             qrCodeSuccessCallback={this.onNewScanResult}/>
-          <ResultContainerPlugin results={this.state.decodedResults} />
+          {/* <ResultContainerPlugin results={this.state.decodedResults} /> */}
         </section>
-        <SwipeableEdgeDrawer/>
+        <SwipeableEdgeDrawer results={this.state.decodedResults}/>
       </div>
     );
   }

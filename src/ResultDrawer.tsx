@@ -3,12 +3,18 @@ import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
 const drawerBleeding = 56;
 
 interface Props {
@@ -17,6 +23,7 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
+  results: any[];
 }
 
 const Root = styled('div')(({ theme }) => ({
@@ -40,7 +47,7 @@ const Puller = styled(Box)(({ theme }) => ({
 }));
 
 export default function SwipeableEdgeDrawer(props: Props) {
-  const { window } = props;
+  const { window, results } = props;
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -61,9 +68,6 @@ export default function SwipeableEdgeDrawer(props: Props) {
           },
         }}
       />
-      <Box sx={{ textAlign: 'center', pt: 1 }}>
-        <Button onClick={toggleDrawer(true)}>Open</Button>
-      </Box>
       <SwipeableDrawer
         container={container}
         anchor="bottom"
@@ -88,7 +92,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
           }}
         >
           <Puller />
-          <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+          <Typography sx={{ p: 2, color: 'text.secondary' }}>{results.length} items</Typography>
         </StyledBox>
         <StyledBox
           sx={{
@@ -98,7 +102,17 @@ export default function SwipeableEdgeDrawer(props: Props) {
             overflow: 'auto',
           }}
         >
-          <Skeleton variant="rectangular" height="100%" />
+          {/* <Skeleton variant="rectangular" height="100%" /> */}
+          <List>
+            {results.map((result, index) => (
+              <ListItem key={index} disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={index} />
+                  <ListItemText primary={result.decodedText} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
         </StyledBox>
       </SwipeableDrawer>
     </Root>
