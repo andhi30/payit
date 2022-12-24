@@ -32,6 +32,9 @@ class Html5QrcodePlugin extends React.Component {
             if (props.disableFlip !== undefined) {
             config.disableFlip = props.disableFlip;
             }
+            if (props.formatsToSupport) {
+                config.formatsToSupport = props.formatsToSupport
+            }
             return config;
         }
 

@@ -28,6 +28,7 @@ class App extends React.Component {
             qrbox={250}
             disableFlip={false}
             qrCodeSuccessCallback={this.onNewScanResult}
+            formatsToSupport={[9]}
           />
           {/* <ResultContainerPlugin results={this.state.decodedResults} /> */}
         </section>
@@ -43,7 +44,7 @@ class App extends React.Component {
     // let decodedResults = this.state.decodedResults;
     // decodedResults.push(decodedResult);
     this.setState((state, props) => {
-      if (decodedResult.result.format.format === 9 && JSON.stringify(state.decodedResults[state.decodedResults.length - 1]) != JSON.stringify(decodedResult)) {
+      if (JSON.stringify(state.decodedResults[state.decodedResults.length - 1]) != JSON.stringify(decodedResult)) {
         state.decodedResults.push(decodedResult);
         return state;
       }

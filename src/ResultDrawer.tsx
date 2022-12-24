@@ -105,16 +105,38 @@ export default function SwipeableEdgeDrawer(props: Props) {
           {/* <Skeleton variant="rectangular" height="100%" /> */}
           <List>
             {results.map((result, index) => (
-              <ListItem key={index} disablePadding>
-                <ListItemButton>
-                  <ListItemText primary={index} />
-                  <ListItemText primary={result.decodedText} />
-                </ListItemButton>
-              </ListItem>
+              <ResultList decodedText={result.decodedText} index={index} />
+              // <ListItem key={index} disablePadding>
+              //   <ListItemButton>
+              //     <ListItemText primary={index} />
+              //     <ListItemText primary={result.decodedText} />
+              //   </ListItemButton>
+              // </ListItem>
             ))}
           </List>
         </StyledBox>
       </SwipeableDrawer>
     </Root>
   );
+}
+
+interface ResultProps {
+  decodedText: String;
+  index: number;
+}
+
+function ResultList(props: ResultProps) {
+  const { decodedText, index } = props;
+  const [ nama, setNama ] = React.useState("Not Registered")
+  React.useEffect(() => {
+    fetch(`https://payit.pythonanywhere.com/products/${decodedText}`).then((response) => response.json().then((value)=> setNama(value.nama_item)))
+  }, [decodedText])
+  return (
+    <ListItem key={index} disablePadding>
+      <ListItemButton>
+        <ListItemText primary={index} />
+        <ListItemText primary={nama} />
+      </ListItemButton>
+    </ListItem>
+  )
 }
