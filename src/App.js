@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      decodedResults: []
+      decodedText: []
     }
 
     // This binding is necessary to make `this` work in the callback.
@@ -32,7 +32,7 @@ class App extends React.Component {
           />
           {/* <ResultContainerPlugin results={this.state.decodedResults} /> */}
         </section>
-        <SwipeableEdgeDrawer results={this.state.decodedResults} />
+        <SwipeableEdgeDrawer results={this.state.decodedText} />
       </div>
     );
   }
@@ -44,8 +44,9 @@ class App extends React.Component {
     // let decodedResults = this.state.decodedResults;
     // decodedResults.push(decodedResult);
     this.setState((state, props) => {
-      if (JSON.stringify(state.decodedResults[state.decodedResults.length - 1]) !== JSON.stringify(decodedResult)) {
-        state.decodedResults.push(decodedResult);
+      if (state.decodedText[state.decodedText.length - 1] !== decodedText) {
+        state.decodedText.push(decodedText);
+        return state
       }
     });
   }

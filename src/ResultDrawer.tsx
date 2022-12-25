@@ -19,7 +19,7 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
-  results: any[];
+  results: String[];
 }
 
 const Root = styled('div')(({ theme }) => ({
@@ -42,9 +42,17 @@ const Puller = styled(Box)(({ theme }) => ({
   left: 'calc(50% - 15px)',
 }));
 
+const ButtonBox = styled('div')(({ theme }) => ({
+  width: 30,
+  height: 80,
+  position: 'absolute',
+  bottom: 8,
+  left: 'calc(50% - 15px)',
+}));
+
 export default function SwipeableEdgeDrawer(props: Props) {
   const { window, results } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -59,7 +67,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
       <Global
         styles={{
           '.MuiDrawer-root > .MuiPaper-root': {
-            height: `calc(50% - ${drawerBleeding}px)`,
+            height: `calc(100% - ${drawerBleeding}px)`,
             overflow: 'visible',
           },
         }}
@@ -77,6 +85,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
         }}
       >
         <StyledBox
+
           sx={{
             position: 'absolute',
             top: -drawerBleeding,
@@ -101,7 +110,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
           {/* <Skeleton variant="rectangular" height="100%" /> */}
           <List>
             {results.map((result, index) => (
-              <ResultList decodedText={result.decodedText} index={index} />
+              <ResultList decodedText={result} index={index} />
               // <ListItem key={index} disablePadding>
               //   <ListItemButton>
               //     <ListItemText primary={index} />
@@ -110,6 +119,9 @@ export default function SwipeableEdgeDrawer(props: Props) {
               // </ListItem>
             ))}
           </List>
+          <ButtonBox>
+            {results.length > 0 && <Button variant="contained">Bayar</Button>}
+          </ButtonBox>
         </StyledBox>
       </SwipeableDrawer>
     </Root>
@@ -133,10 +145,13 @@ function ResultList(props: ResultProps) {
     }
     ))
   }, [])
+  if (jumlah < 1){
+    return (<></>)
+  }
   return (
     <ListItem key={index} disablePadding>
       <ListItemButton>
-        <ListItemText sx={{maxWidth: 25}} primary={nama} primaryTypographyProps={{
+        <ListItemText primary={nama} primaryTypographyProps={{
           variant: 'subtitle2',
           style: {
             whiteSpace: 'nowrap',
@@ -152,5 +167,6 @@ function ResultList(props: ResultProps) {
         <Button size='small' onClick={() => setJumlah(jumlah + 1)}>+</Button>
       </ButtonGroup>
     </ListItem>
+      
   )
 }
