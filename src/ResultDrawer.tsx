@@ -4,17 +4,13 @@ import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { grey } from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { Button, ButtonGroup } from '@mui/material';
 const drawerBleeding = 56;
 
 interface Props {
@@ -127,16 +123,34 @@ interface ResultProps {
 
 function ResultList(props: ResultProps) {
   const { decodedText, index } = props;
-  const [ nama, setNama ] = React.useState("Not Registered")
+  const [nama, setNama] = React.useState("Not Registered")
+  const [jumlah, setJumlah] = React.useState(1)
   React.useEffect(() => {
-    fetch(`https://payit.pythonanywhere.com/products/${decodedText}`).then((response) => response.json().then((value)=> setNama(value.nama_item)))
-  }, [decodedText])
+    fetch(`https://payit.pythonanywhere.com/products/${decodedText}`).then((response) => response.json().then((value) => {
+      if (value.nama_item) {
+        setNama(value.nama_item)
+      }
+    }
+    ))
+  }, [])
   return (
     <ListItem key={index} disablePadding>
       <ListItemButton>
-        <ListItemText primary={index} />
-        <ListItemText primary={nama} />
+        <ListItemText sx={{maxWidth: 25}} primary={nama} primaryTypographyProps={{
+          variant: 'subtitle2',
+          style: {
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+          }
+        }} />
+        {/* <ListItemText primary={jumlah} /> */}
       </ListItemButton>
+      <ButtonGroup>
+        <Button size='small' onClick={() => setJumlah(jumlah - 1)}>-</Button>
+        <Button disabled size='small'>{jumlah}</Button>
+        <Button size='small' onClick={() => setJumlah(jumlah + 1)}>+</Button>
+      </ButtonGroup>
     </ListItem>
   )
 }

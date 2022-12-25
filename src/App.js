@@ -44,9 +44,8 @@ class App extends React.Component {
     // let decodedResults = this.state.decodedResults;
     // decodedResults.push(decodedResult);
     this.setState((state, props) => {
-      if (JSON.stringify(state.decodedResults[state.decodedResults.length - 1]) != JSON.stringify(decodedResult)) {
+      if (JSON.stringify(state.decodedResults[state.decodedResults.length - 1]) !== JSON.stringify(decodedResult)) {
         state.decodedResults.push(decodedResult);
-        return state;
       }
     });
   }
