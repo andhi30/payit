@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/payit/static/css/main.1835db79.chunk.css",
-    "main.js": "/payit/static/js/main.496ee3df.chunk.js",
-    "main.js.map": "/payit/static/js/main.496ee3df.chunk.js.map",
-    "runtime-main.js": "/payit/static/js/runtime-main.6ea52f3c.js",
-    "runtime-main.js.map": "/payit/static/js/runtime-main.6ea52f3c.js.map",
-    "static/js/2.0ad2c52a.chunk.js": "/payit/static/js/2.0ad2c52a.chunk.js",
-    "static/js/2.0ad2c52a.chunk.js.map": "/payit/static/js/2.0ad2c52a.chunk.js.map",
-    "static/js/3.880db8d5.chunk.js": "/payit/static/js/3.880db8d5.chunk.js",
-    "static/js/3.880db8d5.chunk.js.map": "/payit/static/js/3.880db8d5.chunk.js.map",
+    "main.js": "/payit/static/js/main.59a390d2.chunk.js",
+    "main.js.map": "/payit/static/js/main.59a390d2.chunk.js.map",
+    "runtime-main.js": "/payit/static/js/runtime-main.2d96beeb.js",
+    "runtime-main.js.map": "/payit/static/js/runtime-main.2d96beeb.js.map",
+    "static/js/2.85a4ee19.chunk.js": "/payit/static/js/2.85a4ee19.chunk.js",
+    "static/js/2.85a4ee19.chunk.js.map": "/payit/static/js/2.85a4ee19.chunk.js.map",
+    "static/js/3.e6b89663.chunk.js": "/payit/static/js/3.e6b89663.chunk.js",
+    "static/js/3.e6b89663.chunk.js.map": "/payit/static/js/3.e6b89663.chunk.js.map",
     "index.html": "/payit/index.html",
     "static/css/main.1835db79.chunk.css.map": "/payit/static/css/main.1835db79.chunk.css.map",
-    "static/js/2.0ad2c52a.chunk.js.LICENSE.txt": "/payit/static/js/2.0ad2c52a.chunk.js.LICENSE.txt"
+    "static/js/2.85a4ee19.chunk.js.LICENSE.txt": "/payit/static/js/2.85a4ee19.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6ea52f3c.js",
-    "static/js/2.0ad2c52a.chunk.js",
+    "static/js/runtime-main.2d96beeb.js",
+    "static/js/2.85a4ee19.chunk.js",
     "static/css/main.1835db79.chunk.css",
-    "static/js/main.496ee3df.chunk.js"
+    "static/js/main.59a390d2.chunk.js"
   ]
 }
