@@ -55,7 +55,6 @@ class App extends React.Component<IProps, IState> {
                 disableFlip={false}
                 qrCodeSuccessCallback={this.onNewScanResult}
                 formatsToSupport={[9]}
-                facingMode={"environment"}
               />
           }
           {/* <ResultContainerPlugin results={this.state.decodedResults} /> */}

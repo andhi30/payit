@@ -35,8 +35,8 @@ class Html5QrcodePlugin extends React.Component {
             if (props.formatsToSupport) {
                 config.formatsToSupport = props.formatsToSupport
             }
-            if (props.facingMode){
-                config.facingMode = props.facingMode
+            if (props.videoConstraints){
+                config.videoConstraints = props.videoConstraints
             }
             return config;
         }
