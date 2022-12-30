@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/payit/static/css/main.1835db79.chunk.css",
-    "main.js": "/payit/static/js/main.b712107b.chunk.js",
-    "main.js.map": "/payit/static/js/main.b712107b.chunk.js.map",
+    "main.js": "/payit/static/js/main.6076588f.chunk.js",
+    "main.js.map": "/payit/static/js/main.6076588f.chunk.js.map",
     "runtime-main.js": "/payit/static/js/runtime-main.11dc7393.js",
     "runtime-main.js.map": "/payit/static/js/runtime-main.11dc7393.js.map",
     "static/js/2.0511117e.chunk.js": "/payit/static/js/2.0511117e.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.11dc7393.js",
     "static/js/2.0511117e.chunk.js",
     "static/css/main.1835db79.chunk.css",
-    "static/js/main.b712107b.chunk.js"
+    "static/js/main.6076588f.chunk.js"
   ]
 }
