@@ -19,7 +19,8 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
-  results: String[];
+  results: any[];
+  setJumlah: (index: number, jumlahBaru:number) => void;
 }
 
 const Root = styled('div')(({ theme }) => ({
@@ -47,12 +48,12 @@ const ButtonBox = styled('div')(({ theme }) => ({
   height: 80,
   position: 'absolute',
   bottom: 8,
-  left: 'calc(50% - 15px)',
+  left: 'calc(50% - 50px)',
 }));
 
 export default function SwipeableEdgeDrawer(props: Props) {
-  const { window, results } = props;
-  const [open, setOpen] = React.useState(true);
+  const { window, results, setJumlah } = props;
+  const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -110,13 +111,7 @@ export default function SwipeableEdgeDrawer(props: Props) {
           {/* <Skeleton variant="rectangular" height="100%" /> */}
           <List>
             {results.map((result, index) => (
-              <ResultList decodedText={result} index={index} />
-              // <ListItem key={index} disablePadding>
-              //   <ListItemButton>
-              //     <ListItemText primary={index} />
-              //     <ListItemText primary={result.decodedText} />
-              //   </ListItemButton>
-              // </ListItem>
+              <ResultList decodedText={result.barcode} index={index} jumlah={result.jumlah} setJumlah={setJumlah}/>
             ))}
           </List>
           <ButtonBox>
@@ -131,12 +126,13 @@ export default function SwipeableEdgeDrawer(props: Props) {
 interface ResultProps {
   decodedText: String;
   index: number;
+  jumlah: number;
+  setJumlah: (index: number, jumlahBaru:number) => void;
 }
 
 function ResultList(props: ResultProps) {
-  const { decodedText, index } = props;
+  const { decodedText, index, jumlah, setJumlah } = props;
   const [nama, setNama] = React.useState("Not Registered")
-  const [jumlah, setJumlah] = React.useState(1)
   React.useEffect(() => {
     fetch(`https://payit.pythonanywhere.com/products/${decodedText}`).then((response) => response.json().then((value) => {
       if (value.nama_item) {
@@ -162,9 +158,9 @@ function ResultList(props: ResultProps) {
         {/* <ListItemText primary={jumlah} /> */}
       </ListItemButton>
       <ButtonGroup>
-        <Button size='small' onClick={() => setJumlah(jumlah - 1)}>-</Button>
+        <Button size='small' onClick={() => setJumlah(index, jumlah - 1)}>-</Button>
         <Button disabled size='small'>{jumlah}</Button>
-        <Button size='small' onClick={() => setJumlah(jumlah + 1)}>+</Button>
+        <Button size='small' onClick={() => setJumlah(index, jumlah + 1)}>+</Button>
       </ButtonGroup>
     </ListItem>
       
