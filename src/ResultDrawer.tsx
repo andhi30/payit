@@ -11,6 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Button, ButtonGroup } from '@mui/material';
+import { Item } from './App'
 const drawerBleeding = 56;
 
 interface Props {
@@ -19,8 +20,9 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
-  results: any[];
-  setJumlah: (index: number, jumlahBaru:number) => void;
+  results: Item[];
+  setJumlah: (index: number, jumlahBaru: number) => void;
+  displayQr: () => void;
 }
 
 const Root = styled('div')(({ theme }) => ({
@@ -52,7 +54,7 @@ const ButtonBox = styled('div')(({ theme }) => ({
 }));
 
 export default function SwipeableEdgeDrawer(props: Props) {
-  const { window, results, setJumlah } = props;
+  const { window, results, setJumlah, displayQr } = props;
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -111,11 +113,11 @@ export default function SwipeableEdgeDrawer(props: Props) {
           {/* <Skeleton variant="rectangular" height="100%" /> */}
           <List>
             {results.map((result, index) => (
-              <ResultList decodedText={result.barcode} index={index} jumlah={result.jumlah} setJumlah={setJumlah}/>
+              <ResultList decodedText={result.barcode} index={index} jumlah={result.jumlah} setJumlah={setJumlah} />
             ))}
           </List>
           <ButtonBox>
-            {results.length > 0 && <Button variant="contained">Bayar</Button>}
+            {results.length > 0 && <Button variant="contained" onClick={()=>{displayQr();toggleDrawer(false)();}}>Bayar</Button>}
           </ButtonBox>
         </StyledBox>
       </SwipeableDrawer>
@@ -127,7 +129,7 @@ interface ResultProps {
   decodedText: String;
   index: number;
   jumlah: number;
-  setJumlah: (index: number, jumlahBaru:number) => void;
+  setJumlah: (index: number, jumlahBaru: number) => void;
 }
 
 function ResultList(props: ResultProps) {
@@ -141,7 +143,7 @@ function ResultList(props: ResultProps) {
     }
     ))
   }, [])
-  if (jumlah < 1){
+  if (jumlah < 1) {
     return (<></>)
   }
   return (
@@ -163,6 +165,6 @@ function ResultList(props: ResultProps) {
         <Button size='small' onClick={() => setJumlah(index, jumlah + 1)}>+</Button>
       </ButtonGroup>
     </ListItem>
-      
+
   )
 }
